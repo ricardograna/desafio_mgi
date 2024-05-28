@@ -12,6 +12,9 @@ RUN apt-get update && apt-get install -y  \
     && apt-get autoclean -y \
     && rm -rf /var/lib/apt/lists/* 
 
+RUN docker-php-ext-install pdo
+RUN docker-php-ext-install pdo_mysql
+
 # Update apache conf to point to application public directory
 ENV APACHE_DOCUMENT_ROOT=/var/www/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
@@ -33,5 +36,7 @@ RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 
 RUN chown -R www:www .
+
+WORKDIR /var/www
 
 USER www
