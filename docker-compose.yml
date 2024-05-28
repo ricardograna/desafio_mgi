@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   web:
     build:
@@ -32,6 +30,7 @@ services:
       MYSQL_DATABASE: desafio
       MYSQL_USER: desafio
       MYSQL_PASSWORD: desafio
+      MYSQL_ROOT_HOST: '%'
     ports:
       - "3306:3306"
     networks:
