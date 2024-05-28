@@ -1,0 +1,29 @@
+/* src/app/login/login.component.css */
+.login-container {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    & form {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 15px;
+    }
+  }
+  
+  input.ng-touched.ng-invalid {
+    border: 1px solid red;
+  }
+  
+  input.ng-touched.ng-valid {
+    border: 1px solid green;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 1em;
+  }
+  

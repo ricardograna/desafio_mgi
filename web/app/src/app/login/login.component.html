@@ -1,0 +1,23 @@
+<!-- src/app/login/login.component.html -->
+<div class="login-container">
+    <h2>Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email">
+      <div *ngIf="loginForm?.get('email') && loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+        <div *ngIf="loginForm?.get('email')?.errors?.['required']">Email é obrigatório.</div>
+        <div *ngIf="loginForm?.get('email')?.errors?.['email']">Formato de email inválido.</div>
+      </div>
+  
+      <label for="password">Senha:</label>
+      <input id="password" type="password" formControlName="password">
+      <div *ngIf="loginForm?.get('password')?.invalid && loginForm.get('password')?.touched">
+        Senha é obrigatória.
+      </div>
+  
+      <button type="submit" [disabled]="loginForm.invalid || loading">Login</button>
+  
+      <div *ngIf="error" class="error-message">Erro na autenticação</div>
+    </form>
+  </div>
+  
