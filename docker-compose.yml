@@ -4,7 +4,8 @@ services:
       context: ./web
     container_name: desafio-web
     volumes:
-      - ./web/app:/usr/src/app
+      - ./web/app:/app
+      - "/app/node_modules"
     ports:
       - "80:4200"
     networks:
