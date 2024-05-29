@@ -1,10 +1,8 @@
 /* src/app/login/login.component.css */
 .login-container {
-    max-width: 300px;
     margin: 0 auto;
     padding: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+
 
     & form {
         display: flex;
@@ -27,3 +25,17 @@
     margin-top: 1em;
   }
   
+  mat-card {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  button {
+    width: 100%;
+  }

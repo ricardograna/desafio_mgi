@@ -1,23 +1,31 @@
 <!-- src/app/login/login.component.html -->
 <div class="login-container">
-    <h2>Login</h2>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <label for="email">Email:</label>
-      <input id="email" formControlName="email">
-      <div *ngIf="loginForm?.get('email') && loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
-        <div *ngIf="loginForm?.get('email')?.errors?.['required']">Email é obrigatório.</div>
-        <div *ngIf="loginForm?.get('email')?.errors?.['email']">Formato de email inválido.</div>
-      </div>
-  
-      <label for="password">Senha:</label>
-      <input id="password" type="password" formControlName="password">
-      <div *ngIf="loginForm?.get('password')?.invalid && loginForm.get('password')?.touched">
-        Senha é obrigatória.
-      </div>
-  
-      <button type="submit" [disabled]="loginForm.invalid || loading">Login</button>
-  
-      <div *ngIf="error" class="error-message">Erro na autenticação</div>
-    </form>
-  </div>
+
+  <mat-card>
+    <mat-card-title>Autenticação</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+          <mat-label>E-mail</mat-label>
+          <input matInput formControlName="email" placeholder="Informe seu e-mail">
+          <mat-error *ngIf="loginForm?.get('email')?.invalid && loginForm?.get('email')?.touched">
+            Informe um endereço de e-mail válido
+          </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill">
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" formControlName="password" placeholder="Informe sua senha">
+          <mat-error *ngIf="loginForm?.get('password')?.invalid && loginForm?.get('password')?.touched">
+            Senha é obrigatória
+          </mat-error>
+        </mat-form-field>
+    
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+
+        <div *ngIf="error" class="error-message">Erro na autenticação</div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
   
