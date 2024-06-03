@@ -49,6 +49,19 @@ services:
     volumes:
         - "./api:/var/www"
 
+  json-server:
+    image: vimagick/json-server
+    container_name: desafio-json-server
+    command: -h 0.0.0.0 -p 3000 -w db.json
+    init: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./json-server/data:/data
+    restart: always
+    networks:
+      - desafio-network
+
 networks:
   desafio-network:
     driver: bridge
