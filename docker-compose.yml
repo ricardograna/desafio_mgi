@@ -41,6 +41,14 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
 
+  composer:
+    image: composer:2.2.5
+    container_name: desafio-composer
+    command: ["composer", "update"]
+    working_dir: /var/www
+    volumes:
+        - "./api:/var/www"
+
 networks:
   desafio-network:
     driver: bridge
