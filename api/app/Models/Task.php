@@ -33,4 +33,9 @@ class Task extends Model
     {
         return $query->where('user_id', auth()->user()->id);
     }
+
+    public function scopePending($query)
+    {
+        return $query->where('status', self::STATUS_PENDING);
+    }
 }

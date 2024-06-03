@@ -24,6 +24,18 @@ services:
     depends_on:
       - mysql
 
+  api-worker:
+    build:
+      context: ./api
+    container_name: desafio-worker
+    command: php artisan schedule:work
+    volumes:
+      - ./api:/var/www
+    networks:
+      - desafio-network
+    depends_on:
+      - api
+
   mysql:
     image: mysql:8.0
     container_name: desafio-db

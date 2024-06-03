@@ -30,4 +30,8 @@ class TaskRepository implements TaskRepositoryInterface {
     public function delete($id){
        Task::destroy($id);
     }
+
+    public function pending(){
+        return Task::pending()->orderBy('created_at')->get();
+    }
 }
