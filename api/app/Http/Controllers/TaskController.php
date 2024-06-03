@@ -25,6 +25,11 @@ class TaskController extends Controller
         return ApiResponseClass::sendResponse(TaskResource::collection($data), '', 200);
     }
 
+    public function get($id)
+    {
+        return new TaskResource($this->taskRepository->getById($id));
+    }
+
     public function store(StoreTaskRequest $request)
     {
         $data = [

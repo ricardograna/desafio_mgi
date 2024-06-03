@@ -8,7 +8,7 @@ use App\Repository\Interface\TaskRepositoryInterface;
 class TaskRepository implements TaskRepositoryInterface {
 
     public function index(){
-        return Task::all();
+        return Task::own()->orderBy('created_at')->get();
     }
 
     public function getById($id){
@@ -22,7 +22,7 @@ class TaskRepository implements TaskRepositoryInterface {
     public function update(array $data,$id){
        return Task::whereId($id)->update($data);
     }
-    
+
     public function delete($id){
        Task::destroy($id);
     }

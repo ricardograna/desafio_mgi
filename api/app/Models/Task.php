@@ -28,4 +28,9 @@ class Task extends Model
     ];
 
     protected $fillable = ['title', 'description', 'dt_expected_completion', 'user_id'];
+
+    public function scopeOwn($query)
+    {
+        return $query->where('user_id', auth()->user()->id);
+    }
 }
