@@ -22,6 +22,7 @@ Route::group([
         Route::get('/tasks/{id}', [TaskController::class, 'get'])->middleware(TaskUserMiddleware::class);
         Route::get('/tasks', [TaskController::class, 'index']);
         Route::post('/tasks', [TaskController::class, 'store']);
+        Route::put('/tasks/{id}/conclude', [TaskController::class, 'conclude'])->middleware(TaskUserMiddleware::class);
         Route::put('/tasks/{id}', [TaskController::class, 'update'])->middleware(TaskUserMiddleware::class);
         Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->middleware(TaskUserMiddleware::class);
     });

@@ -63,10 +63,24 @@ class TaskController extends Controller
 
         DB::beginTransaction();
         try{
-             $product = $this->taskRepository->update($data,$id);
+             $task = $this->taskRepository->update($data,$id);
 
              DB::commit();
-             return ApiResponseClass::sendResponse('Task Updated', '', 201);
+             return ApiResponseClass::sendResponse(new TaskResource($task), '', 200);
+
+        }catch(\Exception $ex){
+            return ApiResponseClass::rollback($ex);
+        }
+    }
+
+    public function conclude($id)
+    {
+        DB::beginTransaction();
+        try{
+             $product = $this->taskRepository->conclude($id);
+
+             DB::commit();
+             return ApiResponseClass::sendResponse('Task done', '', 200);
 
         }catch(\Exception $ex){
             return ApiResponseClass::rollback($ex);

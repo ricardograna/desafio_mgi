@@ -19,8 +19,12 @@ class TaskRepository implements TaskRepositoryInterface {
        return Task::create($data);
     }
 
-    public function update(array $data,$id){
+    public function update(array $data, $id){
        return Task::whereId($id)->update($data);
+    }
+
+    public function conclude($id){
+        return Task::whereId($id)->update(['status' => Task::STATUS_DONE]);
     }
 
     public function delete($id){
