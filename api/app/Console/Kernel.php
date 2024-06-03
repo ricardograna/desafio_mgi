@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule
             ->job(new SendPendingTasksJob)
-            ->everyTwoMinutes();
+            ->daily();
     }
 
     /**
