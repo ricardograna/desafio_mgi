@@ -1,35 +1,50 @@
 /* src/app/registration/registration.component.css */
 form {
-    max-width: 400px;
-    margin: auto;
-  }
-  
-  div {
-    margin-bottom: 10px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    margin: 4px 0;
-    box-sizing: border-box;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  label {
-    font-weight: bold;
-  }
-  
+  max-width: 100%;
+  margin: auto;
+}
+
+div {
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin: 4px 0;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+label {
+  font-weight: bold;
+}
+
+mat-card {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  gap: 15px;
+  background-color: #e2d59d;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+button {
+  width: 100%;
+}
