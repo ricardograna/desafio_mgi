@@ -1,14 +1,20 @@
 import { Component } from '@angular/core';
 import { TaskService } from '../../../../services/task.service';
+
+import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { Task } from '../../../../models/task.model';
+import { AuthService } from '../../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
   standalone: true,
   imports: [
-    MatTableModule, MatToolbarModule
+    MatTableModule, MatToolbarModule, MatButtonModule, MatIconModule, MatCardModule
   ],
   providers: [
     TaskService
@@ -21,7 +27,7 @@ export class TaskListComponent
   tasks: Task[] = []
   displayedColumns: string[] = ['task-title', 'task-description', 'task-status'];
 
-  constructor(private taskService: TaskService) {
+  constructor(private router: Router, private taskService: TaskService, private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -33,5 +39,10 @@ export class TaskListComponent
         }
         console.log(data)
       })
+  }
+
+  logout() {
+    localStorage.removeItem('access_token');
+    this.router.navigateByUrl("/login");
   }
 }

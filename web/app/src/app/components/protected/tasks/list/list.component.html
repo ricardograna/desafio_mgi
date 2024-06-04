@@ -1,25 +1,38 @@
 <p>
   <mat-toolbar>
+
     <span>Tarefas</span>
+    <span class="toolbar-spacer"></span>
+    <a mat-raised-button href="/tasks/create">Adicionar</a>
+    <button mat-icon-button class="example-icon" aria-label="Logout" title="Logout" (click)="logout()">
+      <mat-icon>clear</mat-icon>
+    </button>
   </mat-toolbar>
 </p>
 
-<table mat-table [dataSource]="tasks">
-  <ng-container matColumnDef="task-title">
-    <th mat-header-cell *matHeaderCellDef> Título </th>
-    <td mat-cell *matCellDef="let element"> {{element.title}} </td>
-  </ng-container>
+<mat-card>
 
-  <ng-container matColumnDef="task-description">
-    <th mat-header-cell *matHeaderCellDef> Descrição </th>
-    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-  </ng-container>
+  <mat-card-content>
 
-  <ng-container matColumnDef="task-status">
-    <th mat-header-cell *matHeaderCellDef> Status </th>
-    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
-  </ng-container>
+    <table mat-table [dataSource]="tasks">
+      <ng-container matColumnDef="task-title">
+        <th mat-header-cell *matHeaderCellDef> Título </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+      <ng-container matColumnDef="task-description">
+        <th mat-header-cell *matHeaderCellDef> Descrição </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="task-status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
+
