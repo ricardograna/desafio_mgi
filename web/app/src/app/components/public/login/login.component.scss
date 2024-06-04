@@ -11,31 +11,43 @@
         gap: 15px;
     }
   }
-  
+
   input.ng-touched.ng-invalid {
     border: 1px solid red;
   }
-  
+
   input.ng-touched.ng-valid {
     border: 1px solid green;
   }
-  
+
   .error-message {
     color: red;
     margin-top: 1em;
   }
-  
+
   mat-card {
     max-width: 500px;
     margin: 2rem auto;
     padding: 2rem;
+    gap: 15px;
+    background-color: #e2d59d;
   }
-  
+
   mat-form-field {
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
   }
-  
+
   button {
     width: 100%;
+  }
+
+  .login-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .login-register {
+    width: 50%;
   }
