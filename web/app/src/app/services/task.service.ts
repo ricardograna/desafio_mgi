@@ -17,4 +17,8 @@ export class TaskService extends BaseService
       )
     );
   }
+
+  public create(data: Task) {
+    return this.post('tasks', data)
+  }
 }

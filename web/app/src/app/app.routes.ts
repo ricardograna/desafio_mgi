@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './components/public/login/login.component';
 import { RegistrationComponent } from './components/public/registration/registration.component';
 import { TaskListComponent } from './components/protected/tasks/list/list.component';
+import { TaskFormComponent } from './components/protected/tasks/form/form.component';
 
 export const routes: Routes = [
     {
@@ -15,6 +16,10 @@ export const routes: Routes = [
     {
       path: 'tasks',
       component: TaskListComponent
+    },
+    {
+      path: 'tasks/create',
+      component: TaskFormComponent
     },
     {
         path: '',

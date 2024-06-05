@@ -25,7 +25,7 @@ import { Router } from '@angular/router';
 export class TaskListComponent
 {
   tasks: Task[] = []
-  displayedColumns: string[] = ['task-title', 'task-description', 'task-status'];
+  displayedColumns: string[] = ['task-title', 'task-description', 'task-dtconclusion', 'task-status'];
 
   constructor(private router: Router, private taskService: TaskService, private authService: AuthService) {
   }
