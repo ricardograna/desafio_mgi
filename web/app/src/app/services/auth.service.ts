@@ -6,13 +6,15 @@ import { Register } from '../models/register.model';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService extends BaseService{
+export class AuthService {
+
+  constructor (private baseService: BaseService) {}
 
   login(data: Login) {
-    return this.post('auth/login', data)
+    return this.baseService.post('auth/login', data)
   }
 
   register(data: Register) {
-    return this.post('auth/register', data)
+    return this.baseService.post('auth/register', data)
   }
 }

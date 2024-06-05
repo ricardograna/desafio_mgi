@@ -4,10 +4,12 @@ import { Task } from '../models/task.model';
 import { Observable, map } from 'rxjs';
 
 @Injectable()
-export class TaskService extends BaseService
+export class TaskService
 {
+  constructor (private baseService: BaseService) {}
+
   public getAll(): Observable<Task[]> {
-    return this.get('tasks')
+    return this.baseService.get('tasks')
       .pipe(
         map((result: any) => {
           if (result && result.success) {
@@ -19,6 +21,14 @@ export class TaskService extends BaseService
   }
 
   public create(data: Task) {
-    return this.post('tasks', data)
+    return this.baseService.post('tasks', data)
+  }
+
+  public update(id: number, data: Task) {
+    return this.baseService.put(`tasks/${id}`, data)
+  }
+
+  public delete(id: number) {
+    return this.baseService.delete(`tasks/${id}`)
   }
 }
