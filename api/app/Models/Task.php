@@ -19,17 +19,13 @@ class Task extends Model
         self::STATUS_DONE           => 'Concluída'
     ];
 
-    protected $casts = [
-        'dt_expected_completion' => 'date',
-    ];
+    protected $dateFormat = 'Y-m-d\TH:i\Z';
 
     protected $attributes = [
         'status' => self::STATUS_PENDING
     ];
 
     protected $fillable = ['title', 'description', 'dt_expected_completion', 'user_id'];
-
-    protected $dateFormat = \DateTime::ATOM;
 
     public function scopeOwn($query)
     {

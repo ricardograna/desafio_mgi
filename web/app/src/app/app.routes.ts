@@ -18,6 +18,10 @@ export const routes: Routes = [
       component: TaskListComponent
     },
     {
+      path: 'tasks/:id',
+      component: TaskFormComponent
+    },
+    {
       path: 'tasks/create',
       component: TaskFormComponent
     },

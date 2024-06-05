@@ -1,6 +1,7 @@
 <p>
   <mat-toolbar color="primary">
-    <span>Nova Tarefa</span>
+    <span *ngIf="!task">Nova Tarefa</span>
+    <span *ngIf="task">Alterar Tarefa</span>
   </mat-toolbar>
 </p>
 

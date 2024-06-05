@@ -27,7 +27,7 @@
 
       <ng-container matColumnDef="dtconclusion">
         <th mat-header-cell *matHeaderCellDef> Data da conclusão prevista </th>
-        <td mat-cell *matCellDef="let element"> {{element.dt_expected_completion}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.dt_expected_completion | date: 'dd/MM/YYYY' }} </td>
       </ng-container>
 
       <ng-container matColumnDef="status">

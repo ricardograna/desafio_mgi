@@ -20,6 +20,10 @@ export class TaskService
     );
   }
 
+  public getOne(id: number) {
+    return this.baseService.get(`tasks/${id}`);
+  }
+
   public create(data: Task) {
     return this.baseService.post('tasks', data)
   }

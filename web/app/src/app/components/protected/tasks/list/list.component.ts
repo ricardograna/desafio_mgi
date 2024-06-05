@@ -6,9 +6,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Task } from '../../../../models/task.model';
 import { Router, RouterModule } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -16,6 +17,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   standalone: true,
   imports: [
     RouterModule,
+    CommonModule,
     MatTableModule, MatToolbarModule, MatButtonModule, MatIconModule, MatCardModule
   ],
   providers: [
