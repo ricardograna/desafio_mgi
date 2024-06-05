@@ -35,4 +35,8 @@ export class TaskService
   public delete(id: number) {
     return this.baseService.delete(`tasks/${id}`)
   }
+
+  public conclude(id: number) {
+    return this.baseService.put(`tasks/${id}/conclude`)
+  }
 }

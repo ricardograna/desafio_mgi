@@ -10,6 +10,7 @@ use App\Http\Resources\TaskResource;
 use App\Http\Requests\Task\StoreTaskRequest;
 use App\Http\Requests\Task\UpdateTaskRequest;
 use Carbon\Carbon;
+use App\Models\Task;
 
 class TaskController extends Controller
 {
@@ -80,10 +81,17 @@ class TaskController extends Controller
     {
         DB::beginTransaction();
         try{
-             $product = $this->taskRepository->conclude($id);
+            $task = $this->taskRepository->getById($id);
 
-             DB::commit();
-             return ApiResponseClass::sendResponse('Task done', '', 200);
+            if ($task->status === Task::STATUS_DONE)
+            {
+                abort(422, 'Tarefa já concluída');
+            }
+
+            $this->taskRepository->conclude($id);
+
+            DB::commit();
+            return ApiResponseClass::sendResponse('Task done', '', 200);
 
         }catch(\Exception $ex){
             return ApiResponseClass::rollback($ex);

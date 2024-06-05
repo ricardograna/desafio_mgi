@@ -18,7 +18,7 @@ export class BaseService {
     return this.http.post(`${this.apiUrl}/${endpoint}`, data)
   }
 
-  put(endpoint: string, data: any) {
+  put(endpoint: string, data?: any) {
     return this.http.put(`${this.apiUrl}/${endpoint}`, data)
   }
 

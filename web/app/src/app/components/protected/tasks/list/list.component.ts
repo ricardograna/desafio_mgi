@@ -59,6 +59,15 @@ export class TaskListComponent
       })
   }
 
+  conclude(id: number) {
+    this.taskService.conclude(id)
+      .subscribe(result => {
+        console.log(result)
+        this.snackBar.open('Tarefa concluída com sucesso');
+        this.load()
+      })
+  }
+
   logout() {
     localStorage.removeItem('access_token');
     this.router.navigateByUrl("/login");
