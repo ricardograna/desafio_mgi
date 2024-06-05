@@ -3,6 +3,7 @@ import { LoginComponent } from './components/public/login/login.component';
 import { RegistrationComponent } from './components/public/registration/registration.component';
 import { TaskListComponent } from './components/protected/tasks/list/list.component';
 import { TaskFormComponent } from './components/protected/tasks/form/form.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -15,15 +16,18 @@ export const routes: Routes = [
     },
     {
       path: 'tasks',
-      component: TaskListComponent
+      component: TaskListComponent,
+      canActivate: [AuthGuard]
     },
     {
       path: 'tasks/:id',
-      component: TaskFormComponent
+      component: TaskFormComponent,
+      canActivate: [AuthGuard]
     },
     {
       path: 'tasks/create',
-      component: TaskFormComponent
+      component: TaskFormComponent,
+      canActivate: [AuthGuard]
     },
     {
         path: '',
