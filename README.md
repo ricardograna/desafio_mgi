@@ -38,3 +38,14 @@ Siga os passos abaixo para configurar e executar o projeto localmente:
     ```
 
 5. Acesse o aplicativo no navegador usando o endereço `http://localhost`).
+
+
+
+6. A API externa está sendo simulada com JSON-SERVER. Para verificar a lista de tarefas enviadas, conferir o arquivo json-sever/db.json
+
+
+
+7. Para conferir o job, executar o comando:
+    ```bash
+    docker exec desafio-worker php artisan schedule:list
+    ```
