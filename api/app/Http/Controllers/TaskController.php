@@ -35,7 +35,7 @@ class TaskController extends Controller
         $data = [
             'title' => $request->title,
             'description' => $request->description,
-            'dt_expected_completion' => Carbon::createFromFormat('d/m/Y', $request->dt_expected_completion)->format('Y-m-d'),
+            'dt_expected_completion' => $request->dt_expected_completion,
             'user_id'  => auth()->user()->id
         ];
 
