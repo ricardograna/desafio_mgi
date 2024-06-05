@@ -23,6 +23,19 @@ services:
       - desafio-network
     depends_on:
       - mysql
+      - composer
+
+  api-migrate:
+    build:
+      context: ./api
+    container_name: desafio-migrate
+    command: php artisan migrate
+    volumes:
+      - ./api:/var/www
+    networks:
+      - desafio-network
+    depends_on:
+      - api
 
   api-worker:
     build:
