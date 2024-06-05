@@ -19,7 +19,9 @@ class Task extends Model
         self::STATUS_DONE           => 'Concluída'
     ];
 
-    protected $dateFormat = 'Y-m-d\TH:i\Z';
+    protected $casts = [
+        'dt_expected_completion' => 'datetime'
+    ];
 
     protected $attributes = [
         'status' => self::STATUS_PENDING

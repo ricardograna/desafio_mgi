@@ -7,7 +7,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
-import {MatMomentDateModule} from '@angular/material/moment-adapter';
 import { Task } from '../../../../models/task.model';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -30,7 +29,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providers: [
     TaskService,
     provideNativeDateAdapter(),
-    provideMomentDateAdapter(undefined, {useUtc: true}),
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
   ],
   templateUrl: './form.component.html',
@@ -79,7 +77,7 @@ export class TaskFormComponent implements OnInit
       {
         this.taskService.create(new Task(this.form.value))
           .subscribe(response => {
-            this.snackBar.open('Tarefa criada com sucesso');
+            this.snackBar.open('Tarefa criada com sucesso', 'ok');
             this.router.navigateByUrl('/tasks');
           }, error => {
             console.error('Error!', error);
@@ -87,7 +85,7 @@ export class TaskFormComponent implements OnInit
       } else {
         this.taskService.update(this.taskId, new Task(this.form.value))
           .subscribe(response => {
-            this.snackBar.open('Tarefa alterada com sucesso');
+            this.snackBar.open('Tarefa alterada com sucesso', 'ok');
             this.router.navigateByUrl('/tasks');
           }, error => {
             console.error('Error!', error);

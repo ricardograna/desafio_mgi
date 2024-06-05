@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Classes\ApiResponseClass;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use App\Repository\Interface\TaskRepositoryInterface;
 use App\Http\Resources\TaskResource;
 use App\Http\Requests\Task\StoreTaskRequest;
@@ -35,7 +36,7 @@ class TaskController extends Controller
         $data = [
             'title' => $request->title,
             'description' => $request->description,
-            'dt_expected_completion' => $request->dt_expected_completion,
+            'dt_expected_completion' => Carbon::parse($request->dt_expected_completion),
             'user_id'  => auth()->user()->id
         ];
 
@@ -58,15 +59,17 @@ class TaskController extends Controller
         $data = [
             'title' => $request->title,
             'description' => $request->description,
-            'dt_expected_completion' => $request->dt_expected_completion,
+            'dt_expected_completion' => Carbon::parse($request->dt_expected_completion),
         ];
+
 
         DB::beginTransaction();
         try{
-             $task = $this->taskRepository->update($data,$id);
+             $this->taskRepository->update($data,$id);
 
              DB::commit();
-             return ApiResponseClass::sendResponse(new TaskResource($task), '', 200);
+
+             return ApiResponseClass::sendResponse($this->get($id), '', 200);
 
         }catch(\Exception $ex){
             return ApiResponseClass::rollback($ex);
