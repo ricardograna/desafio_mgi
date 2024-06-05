@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -20,7 +21,12 @@ import { Router } from '@angular/router';
 export class RegistrationComponent {
   registrationForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+    private snackBar: MatSnackBar
+  ) {
     this.registrationForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
@@ -40,7 +46,7 @@ export class RegistrationComponent {
     if (this.registrationForm.valid) {
       this.authService.register(this.registrationForm.value)
         .subscribe(response => {
-          console.log('Success!', response);
+          this.snackBar.open('Usuário registrado com sucesso', 'ok');
           this.router.navigateByUrl('/login');
         }, error => {
           console.error('Error!', error);
