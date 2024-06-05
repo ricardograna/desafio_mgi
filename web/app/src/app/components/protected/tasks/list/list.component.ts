@@ -7,13 +7,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Task } from '../../../../models/task.model';
-import { AuthService } from '../../../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-list',
   standalone: true,
   imports: [
+    RouterModule,
     MatTableModule, MatToolbarModule, MatButtonModule, MatIconModule, MatCardModule
   ],
   providers: [
@@ -25,19 +27,33 @@ import { Router } from '@angular/router';
 export class TaskListComponent
 {
   tasks: Task[] = []
-  displayedColumns: string[] = ['task-title', 'task-description', 'task-dtconclusion', 'task-status'];
+  displayedColumns: string[] = ['title', 'description', 'dtconclusion', 'status', 'actions'];
 
-  constructor(private router: Router, private taskService: TaskService, private authService: AuthService) {
-  }
+  constructor(
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private taskService: TaskService
+  ) {}
 
   ngOnInit() {
+    this.load()
+  }
+
+  load() {
     this.taskService.getAll()
       .subscribe(data => {
         if (data) {
-          console.log(data)
           this.tasks = data
         }
-        console.log(data)
+      })
+  }
+
+  delete(id: number) {
+    this.taskService.delete(id)
+      .subscribe(result => {
+        console.log(result)
+        this.snackBar.open('Tarefa removida com sucesso');
+        this.load()
       })
   }
 
